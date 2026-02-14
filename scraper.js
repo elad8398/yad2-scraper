@@ -1,8 +1,8 @@
 const Telenode = require('telenode-js');
-const fs = require('fs');
-const config = require('./config.json');
 const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+const { loadConfig, loadListingIds, saveListingIds, appendScanHistory, flagForPush } = require('./src/data-store');
+const { listingActionKeyboard } = require('./src/bot-keyboards');
 
 puppeteer.use(StealthPlugin());
 
@@ -11,7 +11,7 @@ const YAD2_BASE_URL = 'https://www.yad2.co.il';
 const getYad2Response = async (url) => {
     let browser;
     try {
-        browser = await puppeteer.launch({
+        const launchOptions = {
             headless: 'new',
             args: [
                 '--no-sandbox',
@@ -19,7 +19,11 @@ const getYad2Response = async (url) => {
                 '--disable-dev-shm-usage',
                 '--disable-blink-features=AutomationControlled'
             ]
-        });
+        };
+        if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+            launchOptions.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+        }
+        browser = await puppeteer.launch(launchOptions);
         const page = await browser.newPage();
         await page.setViewport({ width: 1920, height: 1080 });
         await page.setExtraHTTPHeaders({
@@ -39,14 +43,12 @@ const getYad2Response = async (url) => {
 }
 
 const extractListingsFromJson = (html) => {
-    // Extract JSON data from script tags (Next.js data)
     const startMarker = '{"props":{"pageProps":';
     const startIdx = html.indexOf(startMarker);
     if (startIdx === -1) {
         console.log('Could not find Next.js data in HTML');
         return [];
     }
-    // Find the closing </script> after the start
     const endMarker = '</script>';
     const endIdx = html.indexOf(endMarker, startIdx);
     if (endIdx === -1) {
@@ -62,13 +64,10 @@ const extractListingsFromJson = (html) => {
 
         for (const q of queries) {
             const qKey = q?.queryKey || [];
-            // Find the feed query - look for the one that has 'private' listings data
             const qData = q?.state?.data || {};
             const hasFeedKey = Array.isArray(qKey) && qKey.some(k => typeof k === 'string' && k.includes('feed'));
             const hasListings = typeof qData === 'object' && ('private' in qData || 'agency' in qData);
             if (hasFeedKey && hasListings) {
-                // Found the listings feed
-                // Collect from all categories
                 const categories = ['private', 'agency', 'yad1', 'platinum', 'kingOfTheHar', 'trio', 'booster', 'leadingBroker'];
                 for (const cat of categories) {
                     const listings = qData[cat];
@@ -119,7 +118,6 @@ const scrapeItems = async (url) => {
         throw new Error("Could not get Yad2 response");
     }
 
-    // Check for bot detection
     if (yad2Html.includes("ShieldSquare Captcha")) {
         throw new Error("Bot detection");
     }
@@ -129,22 +127,8 @@ const scrapeItems = async (url) => {
     return items;
 }
 
-const checkIfHasNewItem = async (items, topic) => {
-    const filePath = `./data/${topic}.json`;
-    let savedIds = [];
-    try {
-        const fileContent = fs.readFileSync(filePath, 'utf-8');
-        savedIds = JSON.parse(fileContent);
-    } catch (e) {
-        if (e.code === "ENOENT") {
-            fs.mkdirSync('data', { recursive: true });
-            fs.writeFileSync(filePath, '[]');
-        } else {
-            console.log(e);
-            throw new Error(`Could not read / create ${filePath}`);
-        }
-    }
-
+const checkIfHasNewItem = (items, topic) => {
+    const savedIds = loadListingIds(topic);
     const currentIds = items.map(item => item.id);
     let shouldUpdateFile = false;
 
@@ -166,15 +150,9 @@ const checkIfHasNewItem = async (items, topic) => {
     });
 
     if (shouldUpdateFile) {
-        const updatedIds = JSON.stringify(filteredIds, null, 2);
-        fs.writeFileSync(filePath, updatedIds);
-        await createPushFlagForWorkflow();
+        saveListingIds(topic, filteredIds);
     }
     return newItems;
-}
-
-const createPushFlagForWorkflow = () => {
-    fs.writeFileSync("push_me", "")
 }
 
 const formatListingMessage = (item) => {
@@ -197,42 +175,67 @@ const formatListingMessage = (item) => {
     return msg;
 }
 
-const scrape = async (topic, url) => {
-    const apiToken = process.env.API_TOKEN || config.telegramApiToken;
-    const chatId = process.env.CHAT_ID || config.chatId;
-    const telenode = new Telenode({apiToken})
+const scrape = async (topic, url, telenode, chatId) => {
     try {
-        await telenode.sendTextMessage(`🔍 סורק ${topic}...`, chatId)
+        await telenode.sendTextMessage(`🔍 סורק ${topic}...`, chatId);
         const scrapedItems = await scrapeItems(url);
-        const newItems = await checkIfHasNewItem(scrapedItems, topic);
+        const newItems = checkIfHasNewItem(scrapedItems, topic);
+
+        // Record in scan history
+        appendScanHistory({
+            timestamp: new Date().toISOString(),
+            topic,
+            totalListings: scrapedItems.length,
+            newListingsCount: newItems.length,
+            listings: newItems
+        });
+
         if (newItems.length > 0) {
             for (const item of newItems) {
                 const msg = formatListingMessage(item);
-                await telenode.sendTextMessage(msg, chatId);
+                // Send with "Save to Favorites" button
+                await telenode.sendInlineKeyboard(chatId, msg, listingActionKeyboard(item.id));
             }
             await telenode.sendTextMessage(`✅ סה"כ ${newItems.length} מודעות חדשות!`, chatId);
         } else {
             await telenode.sendTextMessage(`🔍 ${topic}: אין מודעות חדשות`, chatId);
         }
+
+        return { topic, newCount: newItems.length, totalCount: scrapedItems.length };
     } catch (e) {
         let errMsg = e?.message || "";
         if (errMsg) {
-            errMsg = `Error: ${errMsg}`
+            errMsg = `Error: ${errMsg}`;
         }
-        await telenode.sendTextMessage(`Scan failed... ${errMsg}`, chatId)
-        throw new Error(e)
+        await telenode.sendTextMessage(`Scan failed... ${errMsg}`, chatId);
+        throw e;
     }
 }
 
-const program = async () => {
-    await Promise.all(config.projects.filter(project => {
-        if (project.disabled) {
-            console.log(`Topic "${project.topic}" is disabled. Skipping.`);
+const runAllScans = async (telenode, chatId) => {
+    const config = loadConfig();
+    const activeProjects = config.projects.filter(p => {
+        if (p.disabled) {
+            console.log(`Topic "${p.topic}" is disabled. Skipping.`);
         }
-        return !project.disabled;
-    }).map(async project => {
-        await scrape(project.topic, project.url)
-    }))
-};
+        return !p.disabled;
+    });
 
-program();
+    if (activeProjects.length === 0) {
+        console.log('No active projects to scan');
+        return;
+    }
+
+    const results = [];
+    for (const project of activeProjects) {
+        try {
+            const result = await scrape(project.topic, project.url, telenode, chatId);
+            results.push(result);
+        } catch (e) {
+            console.log(`Error scanning ${project.topic}:`, e.message);
+        }
+    }
+    return results;
+}
+
+module.exports = { scrapeItems, checkIfHasNewItem, formatListingMessage, scrape, runAllScans };

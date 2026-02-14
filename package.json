@@ -5,7 +5,8 @@
   "author": "Niv Ezra",
   "license": "MIT",
   "scripts": {
-    "scrape": "node scraper.js"
+    "scrape": "node scraper.js",
+    "start": "node main.js"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
