@@ -1046,5 +1046,83 @@
         "adType": "booster"
       }
     ]
+  },
+  {
+    "timestamp": "2026-02-14T14:29:47.980Z",
+    "topic": "apartments-TLV",
+    "totalListings": 54,
+    "newListingsCount": 5,
+    "listings": [
+      {
+        "id": "s23dypkz",
+        "link": "https://www.yad2.co.il/realestate/item/s23dypkz",
+        "price": 4700,
+        "rooms": 3,
+        "sqm": 60,
+        "floor": 2,
+        "street": "מחרוזת",
+        "neighborhood": "יפו ד', גבעת התמרים",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202601/03/2_2/o/y2_1_05281_20260103110819.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "xea8urku",
+        "link": "https://www.yad2.co.il/realestate/item/xea8urku",
+        "price": 5000,
+        "rooms": 3,
+        "sqm": 110,
+        "floor": 0,
+        "street": "יפת",
+        "neighborhood": "צהלון, שיכוני חסכון",
+        "city": "תל אביב יפו",
+        "propertyType": "דירת גן",
+        "image": "https://img.yad2.co.il/Pic/202602/10/2_6/o/y2_1pa_010172_20260210141628.jpeg",
+        "adType": "agency"
+      },
+      {
+        "id": "q9fxiw2b",
+        "link": "https://www.yad2.co.il/realestate/item/q9fxiw2b",
+        "price": 3500,
+        "rooms": 1,
+        "sqm": 18,
+        "floor": 2,
+        "street": "אבן גבירול",
+        "neighborhood": "הצפון הישן - צפון",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202512/30/2_6/o/y2_1pa_010451_20251230133423.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "fg3coud8",
+        "link": "https://www.yad2.co.il/realestate/item/fg3coud8",
+        "price": 3600,
+        "rooms": 1,
+        "sqm": 25,
+        "floor": 2,
+        "street": "כרם התימנים",
+        "neighborhood": "כרם התימנים",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202505/12/2_6/o/y2_1_iSTRvoVUSw_20250512.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "3d56hqib",
+        "link": "https://www.yad2.co.il/realestate/item/3d56hqib",
+        "price": 3800,
+        "rooms": 1,
+        "sqm": 35,
+        "floor": 2,
+        "street": "שדרות וושינגטון",
+        "neighborhood": "פלורנטין",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202602/12/2_6/o/y2_1_2m0v1BRyO6_20260212.jpeg",
+        "adType": "platinum"
+      }
+    ]
   }
 ]
