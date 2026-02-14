@@ -4,3 +4,5 @@ node_modules
 localTests.js
 
 push_me
+debug_page.html
+debug_data.json

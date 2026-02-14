@@ -1,4 +1,3 @@
-const cheerio = require('cheerio');
 const Telenode = require('telenode-js');
 const fs = require('fs');
 const config = require('./config.json');
@@ -39,64 +38,94 @@ const getYad2Response = async (url) => {
     }
 }
 
+const extractListingsFromJson = (html) => {
+    // Extract JSON data from script tags (Next.js data)
+    const startMarker = '{"props":{"pageProps":';
+    const startIdx = html.indexOf(startMarker);
+    if (startIdx === -1) {
+        console.log('Could not find Next.js data in HTML');
+        return [];
+    }
+    // Find the closing </script> after the start
+    const endMarker = '</script>';
+    const endIdx = html.indexOf(endMarker, startIdx);
+    if (endIdx === -1) {
+        console.log('Could not find end of script tag');
+        return [];
+    }
+    const jsonStr = html.substring(startIdx, endIdx);
+
+    try {
+        const data = JSON.parse(jsonStr);
+        const queries = data?.props?.pageProps?.dehydratedState?.queries || [];
+        const items = [];
+
+        for (const q of queries) {
+            const qKey = q?.queryKey || [];
+            // Find the feed query - look for the one that has 'private' listings data
+            const qData = q?.state?.data || {};
+            const hasFeedKey = Array.isArray(qKey) && qKey.some(k => typeof k === 'string' && k.includes('feed'));
+            const hasListings = typeof qData === 'object' && ('private' in qData || 'agency' in qData);
+            if (hasFeedKey && hasListings) {
+                // Found the listings feed
+                // Collect from all categories
+                const categories = ['private', 'agency', 'yad1', 'platinum', 'kingOfTheHar', 'trio', 'booster', 'leadingBroker'];
+                for (const cat of categories) {
+                    const listings = qData[cat];
+                    if (Array.isArray(listings)) {
+                        for (const listing of listings) {
+                            const token = listing.token || '';
+                            const link = token ? `${YAD2_BASE_URL}/realestate/item/${token}` : '';
+                            const price = listing.price || '';
+                            const rooms = listing.additionalDetails?.roomsCount || '';
+                            const sqm = listing.additionalDetails?.squareMeter || listing.metaData?.squareMeterBuild || '';
+                            const floor = listing.address?.house?.floor;
+                            const street = listing.address?.street?.text || '';
+                            const neighborhood = listing.address?.neighborhood?.text || '';
+                            const city = listing.address?.city?.text || '';
+                            const propertyType = listing.additionalDetails?.property?.text || '';
+                            const image = listing.metaData?.coverImage || '';
+
+                            items.push({
+                                id: token || image || `${street}-${price}`,
+                                link,
+                                price,
+                                rooms,
+                                sqm,
+                                floor: floor !== undefined && floor !== null ? floor : '',
+                                street,
+                                neighborhood,
+                                city,
+                                propertyType,
+                                image,
+                                adType: cat
+                            });
+                        }
+                    }
+                }
+                break;
+            }
+        }
+        return items;
+    } catch (e) {
+        console.log('Error parsing JSON data:', e.message);
+        return [];
+    }
+}
+
 const scrapeItems = async (url) => {
     const yad2Html = await getYad2Response(url);
     if (!yad2Html) {
         throw new Error("Could not get Yad2 response");
     }
-    const $ = cheerio.load(yad2Html);
-    const title = $("title");
-    const titleText = title.first().text();
-    if (titleText === "ShieldSquare Captcha") {
+
+    // Check for bot detection
+    if (yad2Html.includes("ShieldSquare Captcha")) {
         throw new Error("Bot detection");
     }
 
-    const items = [];
-
-    // Try to find feed items and extract links
-    $(".feeditem").each((_, elm) => {
-        const $item = $(elm);
-        // Try to find a link in the feed item
-        const link = $item.find("a").attr('href');
-        const imgSrc = $item.find(".pic img").attr('src');
-        const itemId = $item.attr('id') || $item.attr('data-id') || '';
-
-        let fullLink = '';
-        if (link) {
-            fullLink = link.startsWith('http') ? link : `${YAD2_BASE_URL}${link}`;
-        } else if (itemId) {
-            fullLink = `${YAD2_BASE_URL}/realestate/item/${itemId}`;
-        }
-
-        const identifier = fullLink || imgSrc || '';
-        if (identifier) {
-            items.push({
-                id: identifier,
-                link: fullLink,
-                image: imgSrc || ''
-            });
-        }
-    });
-
-    // If no feeditems found, try alternative selectors
-    if (items.length === 0) {
-        $("a[href*='/item/'], a[href*='/realestate/']").each((_, elm) => {
-            const $link = $(elm);
-            const href = $link.attr('href');
-            if (href && href.includes('/item/')) {
-                const fullLink = href.startsWith('http') ? href : `${YAD2_BASE_URL}${href}`;
-                const imgSrc = $link.find("img").attr('src') || '';
-                if (!items.some(item => item.id === fullLink)) {
-                    items.push({
-                        id: fullLink,
-                        link: fullLink,
-                        image: imgSrc
-                    });
-                }
-            }
-        });
-    }
-
+    const items = extractListingsFromJson(yad2Html);
+    console.log(`Found ${items.length} listings`);
     return items;
 }
 
@@ -119,7 +148,6 @@ const checkIfHasNewItem = async (items, topic) => {
     const currentIds = items.map(item => item.id);
     let shouldUpdateFile = false;
 
-    // Remove old items that are no longer listed
     const filteredIds = savedIds.filter(id => {
         if (!currentIds.includes(id)) {
             shouldUpdateFile = true;
@@ -128,7 +156,6 @@ const checkIfHasNewItem = async (items, topic) => {
         return true;
     });
 
-    // Find new items
     const newItems = [];
     items.forEach(item => {
         if (!filteredIds.includes(item.id)) {
@@ -150,23 +177,37 @@ const createPushFlagForWorkflow = () => {
     fs.writeFileSync("push_me", "")
 }
 
+const formatListingMessage = (item) => {
+    let msg = `🏠 מודעה חדשה!\n`;
+    msg += `━━━━━━━━━━━━━━━\n`;
+
+    if (item.propertyType) msg += `🏢 ${item.propertyType}\n`;
+    if (item.street) {
+        msg += `📍 ${item.street}`;
+        if (item.neighborhood) msg += `, ${item.neighborhood}`;
+        if (item.city) msg += `, ${item.city}`;
+        msg += `\n`;
+    }
+    if (item.price) msg += `💰 ${item.price.toLocaleString()} ₪\n`;
+    if (item.rooms) msg += `🛏 ${item.rooms} חדרים\n`;
+    if (item.floor !== '') msg += `🏗 קומה ${item.floor}\n`;
+    if (item.sqm) msg += `📐 ${item.sqm} מ"ר\n`;
+    if (item.link) msg += `\n🔗 ${item.link}`;
+
+    return msg;
+}
+
 const scrape = async (topic, url) => {
     const apiToken = process.env.API_TOKEN || config.telegramApiToken;
     const chatId = process.env.CHAT_ID || config.chatId;
     const telenode = new Telenode({apiToken})
     try {
-        await telenode.sendTextMessage(`Starting scanning ${topic}...`, chatId)
+        await telenode.sendTextMessage(`🔍 סורק ${topic}...`, chatId)
         const scrapedItems = await scrapeItems(url);
         const newItems = await checkIfHasNewItem(scrapedItems, topic);
         if (newItems.length > 0) {
             for (const item of newItems) {
-                let msg = `🏠 מודעה חדשה!\n\n`;
-                if (item.link) {
-                    msg += `🔗 לינק: ${item.link}\n`;
-                }
-                if (item.image) {
-                    msg += `🖼 תמונה: ${item.image}`;
-                }
+                const msg = formatListingMessage(item);
                 await telenode.sendTextMessage(msg, chatId);
             }
             await telenode.sendTextMessage(`✅ סה"כ ${newItems.length} מודעות חדשות!`, chatId);
@@ -178,7 +219,7 @@ const scrape = async (topic, url) => {
         if (errMsg) {
             errMsg = `Error: ${errMsg}`
         }
-        await telenode.sendTextMessage(`Scan workflow failed... ${errMsg}`, chatId)
+        await telenode.sendTextMessage(`Scan failed... ${errMsg}`, chatId)
         throw new Error(e)
     }
 }
