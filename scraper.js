@@ -8,6 +8,31 @@ puppeteer.use(StealthPlugin());
 
 const YAD2_BASE_URL = 'https://www.yad2.co.il';
 
+// Realistic User-Agent rotation
+const USER_AGENTS = [
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.2 Safari/605.1.15',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:134.0) Gecko/20100101 Firefox/134.0',
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+];
+
+const VIEWPORTS = [
+    { width: 1920, height: 1080 },
+    { width: 1536, height: 864 },
+    { width: 1440, height: 900 },
+    { width: 1366, height: 768 },
+    { width: 2560, height: 1440 }
+];
+
+const randomDelay = (min, max) => {
+    const ms = Math.floor(Math.random() * (max - min + 1)) + min;
+    return new Promise(resolve => setTimeout(resolve, ms));
+};
+
+const pickRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
 const getYad2Response = async (url) => {
     let browser;
     try {
@@ -17,7 +42,10 @@ const getYad2Response = async (url) => {
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
                 '--disable-dev-shm-usage',
-                '--disable-blink-features=AutomationControlled'
+                '--disable-blink-features=AutomationControlled',
+                '--disable-infobars',
+                '--window-size=1920,1080',
+                '--lang=he-IL'
             ]
         };
         if (process.env.PUPPETEER_EXECUTABLE_PATH) {
@@ -25,12 +53,47 @@ const getYad2Response = async (url) => {
         }
         browser = await puppeteer.launch(launchOptions);
         const page = await browser.newPage();
-        await page.setViewport({ width: 1920, height: 1080 });
+
+        // Random viewport
+        const viewport = pickRandom(VIEWPORTS);
+        await page.setViewport(viewport);
+
+        // Random User-Agent
+        const userAgent = pickRandom(USER_AGENTS);
+        await page.setUserAgent(userAgent);
+
         await page.setExtraHTTPHeaders({
-            'Accept-Language': 'he-IL,he;q=0.9,en-US;q=0.8,en;q=0.7'
+            'Accept-Language': 'he-IL,he;q=0.9,en-US;q=0.8,en;q=0.7',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Sec-Fetch-Dest': 'document',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-Site': 'none',
+            'Sec-Fetch-User': '?1',
+            'Upgrade-Insecure-Requests': '1'
         });
+
+        // Override navigator properties to look more human
+        await page.evaluateOnNewDocument(() => {
+            Object.defineProperty(navigator, 'webdriver', { get: () => false });
+            Object.defineProperty(navigator, 'languages', { get: () => ['he-IL', 'he', 'en-US', 'en'] });
+            Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5] });
+            window.chrome = { runtime: {} };
+        });
+
+        console.log(`Using UA: ${userAgent.substring(0, 50)}... | Viewport: ${viewport.width}x${viewport.height}`);
+
         await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
-        await new Promise(resolve => setTimeout(resolve, 3000));
+
+        // Random delay 2-5 seconds (like a real user)
+        await randomDelay(2000, 5000);
+
+        // Simulate human scroll behavior
+        await page.evaluate(() => {
+            window.scrollBy(0, Math.floor(Math.random() * 300) + 100);
+        });
+        await randomDelay(500, 1500);
+
         const html = await page.content();
         return html;
     } catch (err) {
@@ -112,19 +175,32 @@ const extractListingsFromJson = (html) => {
     }
 }
 
-const scrapeItems = async (url) => {
-    const yad2Html = await getYad2Response(url);
-    if (!yad2Html) {
-        throw new Error("Could not get Yad2 response");
-    }
+const scrapeItems = async (url, retries = 2) => {
+    for (let attempt = 1; attempt <= retries + 1; attempt++) {
+        const yad2Html = await getYad2Response(url);
+        if (!yad2Html) {
+            if (attempt <= retries) {
+                console.log(`Attempt ${attempt} failed (no response). Retrying in 10s...`);
+                await randomDelay(8000, 15000);
+                continue;
+            }
+            throw new Error("Could not get Yad2 response");
+        }
 
-    if (yad2Html.includes("ShieldSquare Captcha")) {
-        throw new Error("Bot detection");
-    }
+        if (yad2Html.includes("ShieldSquare Captcha")) {
+            if (attempt <= retries) {
+                console.log(`Attempt ${attempt} blocked by ShieldSquare. Retrying in 15s...`);
+                await randomDelay(12000, 20000);
+                continue;
+            }
+            throw new Error("Bot detection");
+        }
 
-    const items = extractListingsFromJson(yad2Html);
-    console.log(`Found ${items.length} listings`);
-    return items;
+        // Success - extract and return
+        const items = extractListingsFromJson(yad2Html);
+        console.log(`Found ${items.length} listings (attempt ${attempt})`);
+        return items;
+    }
 }
 
 const checkIfHasNewItem = (items, topic) => {

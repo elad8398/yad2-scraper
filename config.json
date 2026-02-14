@@ -1,6 +1,6 @@
 {
-  "telegramApiToken": "8565127748:AAH0ppHqcaj1oGy9i2VCz9xVbl3g-wtvvLo",
-  "chatId": "497325621",
+  "telegramApiToken": null,
+  "chatId": null,
   "projects": [
     {
       "topic": "apartments-TLV",
