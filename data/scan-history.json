@@ -3790,5 +3790,41 @@
         "adType": "platinum"
       }
     ]
+  },
+  {
+    "timestamp": "2026-02-16T20:02:43.349Z",
+    "topic": "apartments-TLV",
+    "totalListings": 54,
+    "newListingsCount": 2,
+    "listings": [
+      {
+        "id": "tsoykq0n",
+        "link": "https://www.yad2.co.il/realestate/item/tsoykq0n",
+        "price": 5000,
+        "rooms": 3,
+        "sqm": 70,
+        "floor": 3,
+        "street": "רמה",
+        "neighborhood": "נווה שרת",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202511/17/2_6/o/y2_1pa_010233_20251117223137.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "udwe1wg1",
+        "link": "https://www.yad2.co.il/realestate/item/udwe1wg1",
+        "price": 5000,
+        "rooms": 3,
+        "sqm": 50,
+        "floor": 3,
+        "street": "אייגר",
+        "neighborhood": "נווה שאנן",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202601/21/2_6/o/y2_1pa_010377_20260121171522.jpeg",
+        "adType": "platinum"
+      }
+    ]
   }
 ]
