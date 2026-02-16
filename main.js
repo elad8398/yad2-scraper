@@ -1,5 +1,5 @@
 const Telenode = require('telenode-js');
-const { loadConfig, loadBotState, saveBotState } = require('./src/data-store');
+const { loadConfig, loadBotState, saveBotState, flagForPush } = require('./src/data-store');
 const { getUpdates, deleteWebhook } = require('./src/telegram-api');
 const { processUpdates } = require('./src/bot-commands');
 const { runAllScans } = require('./scraper');
@@ -28,6 +28,7 @@ async function main() {
         if (updates.length > 0) {
             console.log(`Processing ${updates.length} updates...`);
             await processUpdates(updates, telenode, chatId, apiToken);
+            flagForPush();
         } else {
             console.log('No new updates');
         }
@@ -35,19 +36,19 @@ async function main() {
         console.log('Error processing bot commands:', e.message);
     }
 
-    // === Phase 2: Run scraper if enabled ===
+    // === Phase 2: Run scraper ===
     console.log('--- Phase 2: Running scraper ---');
     const botState = loadBotState();
 
-    // Check if scan was manually requested
-    if (botState.scanRequested) {
+    const manualScan = botState.scanRequested === true;
+    if (manualScan) {
         botState.scanRequested = false;
         saveBotState(botState);
-        console.log('Manual scan requested');
+        console.log('Manual scan requested by user');
     }
 
-    // Check if scanning is enabled
-    if (botState.scanEnabled === false) {
+    // Skip scan only if disabled AND not manually requested
+    if (botState.scanEnabled === false && !manualScan) {
         console.log('Scanning is disabled. Skipping.');
         return;
     }
