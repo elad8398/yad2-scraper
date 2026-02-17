@@ -4552,5 +4552,41 @@
         "adType": "platinum"
       }
     ]
+  },
+  {
+    "timestamp": "2026-02-17T00:03:57.511Z",
+    "topic": "apartments-TLV",
+    "totalListings": 54,
+    "newListingsCount": 2,
+    "listings": [
+      {
+        "id": "fl44xzn6",
+        "link": "https://www.yad2.co.il/realestate/item/fl44xzn6",
+        "price": 4200,
+        "rooms": 2,
+        "sqm": 40,
+        "floor": 4,
+        "street": "אח\"י דקר",
+        "neighborhood": "נווה שרת",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202601/28/2_6/o/y2_1pa_010024_20260128090026.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "8jqdo04o",
+        "link": "https://www.yad2.co.il/realestate/item/8jqdo04o",
+        "price": 2750,
+        "rooms": 1,
+        "sqm": 16,
+        "floor": 0,
+        "street": "דה פיג'וטו",
+        "neighborhood": "לב תל אביב, לב העיר צפון",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202511/17/2_6/o/y2_2_M0cFabA8wj_20251117.jpeg",
+        "adType": "platinum"
+      }
+    ]
   }
 ]
