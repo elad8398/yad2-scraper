@@ -8164,5 +8164,83 @@
         "adType": "platinum"
       }
     ]
+  },
+  {
+    "timestamp": "2026-02-17T23:05:52.240Z",
+    "topic": "apartments-TLV",
+    "totalListings": 54,
+    "newListingsCount": 5,
+    "listings": [
+      {
+        "id": "wiqylbq4",
+        "link": "https://www.yad2.co.il/realestate/item/wiqylbq4",
+        "price": 4900,
+        "rooms": 3,
+        "sqm": 70,
+        "floor": 1,
+        "street": "מוצא",
+        "neighborhood": "נווה חן",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202601/12/2_2/o/y2_1pa_010009_20260112161311.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "j5nwgl2y",
+        "link": "https://www.yad2.co.il/realestate/item/j5nwgl2y",
+        "price": 4700,
+        "rooms": 2,
+        "sqm": 80,
+        "floor": 0,
+        "street": "נ\"ח",
+        "neighborhood": "נווה אליעזר וכפר שלם מזרח",
+        "city": "תל אביב יפו",
+        "propertyType": "בית פרטי/ קוטג'",
+        "image": "https://img.yad2.co.il/Pic/202601/29/2_2/o/y2_1pa_010231_20260129191015.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "q366gzbt",
+        "link": "https://www.yad2.co.il/realestate/item/q366gzbt",
+        "price": 4900,
+        "rooms": 4,
+        "sqm": 100,
+        "floor": 3,
+        "street": "ד\"ר אברהם אליהו הרכבי",
+        "neighborhood": "תל חיים",
+        "city": "תל אביב יפו",
+        "propertyType": "סאבלט",
+        "image": "https://img.yad2.co.il/Pic/202511/04/2_2/o/y2_1pa_010008_20251104133515.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "ufune1e5",
+        "link": "https://www.yad2.co.il/realestate/item/ufune1e5",
+        "price": 3600,
+        "rooms": 3,
+        "sqm": 55,
+        "floor": 3,
+        "street": "דרך הטייסים",
+        "neighborhood": "ניר אביב",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202602/15/2_6/o/y2_3_sHu3E7yoZ__20260215.jpg",
+        "adType": "platinum"
+      },
+      {
+        "id": "7odb8i46",
+        "link": "https://www.yad2.co.il/realestate/item/7odb8i46",
+        "price": 4000,
+        "rooms": 1.5,
+        "sqm": 50,
+        "floor": 0,
+        "street": "אבולעפיה",
+        "neighborhood": "גבעת הרצל, אזור המלאכה יפו",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202508/26/2_6/o/y2_1pa_010918_20250826070527.jpeg",
+        "adType": "platinum"
+      }
+    ]
   }
 ]
