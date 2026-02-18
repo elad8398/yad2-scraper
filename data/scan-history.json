@@ -10466,5 +10466,111 @@
         "adType": "platinum"
       }
     ]
+  },
+  {
+    "timestamp": "2026-02-18T15:38:32.366Z",
+    "topic": "apartments-TLV",
+    "totalListings": 54,
+    "newListingsCount": 7,
+    "listings": [
+      {
+        "id": "j5nwgl2y",
+        "link": "https://www.yad2.co.il/realestate/item/j5nwgl2y",
+        "price": 4700,
+        "rooms": 2,
+        "sqm": 80,
+        "floor": 0,
+        "street": "נ\"ח",
+        "neighborhood": "נווה אליעזר וכפר שלם מזרח",
+        "city": "תל אביב יפו",
+        "propertyType": "בית פרטי/ קוטג'",
+        "image": "https://img.yad2.co.il/Pic/202601/29/2_2/o/y2_1pa_010231_20260129191015.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "wiqylbq4",
+        "link": "https://www.yad2.co.il/realestate/item/wiqylbq4",
+        "price": 4900,
+        "rooms": 3,
+        "sqm": 70,
+        "floor": 1,
+        "street": "מוצא",
+        "neighborhood": "נווה חן",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202601/12/2_2/o/y2_1pa_010009_20260112161311.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "q366gzbt",
+        "link": "https://www.yad2.co.il/realestate/item/q366gzbt",
+        "price": 4900,
+        "rooms": 4,
+        "sqm": 100,
+        "floor": 3,
+        "street": "ד\"ר אברהם אליהו הרכבי",
+        "neighborhood": "תל חיים",
+        "city": "תל אביב יפו",
+        "propertyType": "סאבלט",
+        "image": "https://img.yad2.co.il/Pic/202511/04/2_2/o/y2_1pa_010008_20251104133515.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "ld04tgio",
+        "link": "https://www.yad2.co.il/realestate/item/ld04tgio",
+        "price": 4900,
+        "rooms": 2,
+        "sqm": 50,
+        "floor": 0,
+        "street": "אבן ספיר",
+        "neighborhood": "שיכון דן, נווה דן",
+        "city": "תל אביב יפו",
+        "propertyType": "יחידת דיור",
+        "image": "https://img.yad2.co.il/Pic/202601/31/2_2/o/y2_1pa_010331_20260131213125.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "fyoqsjxs",
+        "link": "https://www.yad2.co.il/realestate/item/fyoqsjxs",
+        "price": 4500,
+        "rooms": 1,
+        "sqm": 47,
+        "floor": 0,
+        "street": "גת רימון",
+        "neighborhood": "לב תל אביב, לב העיר צפון",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202510/26/2_6/o/y2_1pa_010988_20251026151941.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "4nch8yl2",
+        "link": "https://www.yad2.co.il/realestate/item/4nch8yl2",
+        "price": 4300,
+        "rooms": 2.5,
+        "sqm": 40,
+        "floor": 2,
+        "street": "תל גיבורים",
+        "neighborhood": "נווה עופר, תל כביר",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202601/29/2_6/o/y2_1pa_010338_20260129140108.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "peiqgva0",
+        "link": "https://www.yad2.co.il/realestate/item/peiqgva0",
+        "price": 3600,
+        "rooms": 2.5,
+        "sqm": 58,
+        "floor": 3,
+        "street": "מח\"ל",
+        "neighborhood": "ניר אביב",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202602/03/2_6/o/y2_2_Dh_Cbp1Ckn_20260203.jpg",
+        "adType": "platinum"
+      }
+    ]
   }
 ]
