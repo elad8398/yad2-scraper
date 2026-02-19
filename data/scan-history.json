@@ -14642,5 +14642,125 @@
         "adType": "platinum"
       }
     ]
+  },
+  {
+    "timestamp": "2026-02-19T18:36:12.025Z",
+    "topic": "apartments-TLV",
+    "totalListings": 54,
+    "newListingsCount": 8,
+    "listings": [
+      {
+        "id": "iqfxq8mf",
+        "link": "https://www.yad2.co.il/realestate/item/iqfxq8mf",
+        "price": 4600,
+        "rooms": 1,
+        "sqm": 37,
+        "floor": 6,
+        "street": "יוניצמן",
+        "neighborhood": "גלילות",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202602/08/2_2/o/y2_1pa_010854_20260208215635.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "ddkeaghb",
+        "link": "https://www.yad2.co.il/realestate/item/ddkeaghb",
+        "price": 3800,
+        "rooms": 2,
+        "sqm": 36,
+        "floor": 3,
+        "street": "רוטנשטרייך",
+        "neighborhood": "ניר אביב",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202509/17/2_2/o/y2_1_09950_20250917194753.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "3tiynoch",
+        "link": "https://www.yad2.co.il/realestate/item/3tiynoch",
+        "price": 3500,
+        "rooms": 1,
+        "sqm": 25,
+        "floor": 0,
+        "street": "שדרות נורדאו",
+        "neighborhood": "הצפון הישן - צפון",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202602/09/2_6/o/y2_1pa_010626_20260209155824.jpeg",
+        "adType": "agency"
+      },
+      {
+        "id": "knozfpn8",
+        "link": "https://www.yad2.co.il/realestate/item/knozfpn8",
+        "price": 4950,
+        "rooms": 2,
+        "sqm": 50,
+        "floor": 1,
+        "street": "תושיה",
+        "neighborhood": "מונטיפיורי, הרכבת",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202511/23/2_6/o/y2_1pa_010499_20251123133928.jpeg",
+        "adType": "agency"
+      },
+      {
+        "id": "jlwldc2f",
+        "link": "https://www.yad2.co.il/realestate/item/jlwldc2f",
+        "price": 4700,
+        "rooms": 2,
+        "sqm": 40,
+        "floor": 1,
+        "street": "ורד",
+        "neighborhood": "התקוה, בית יעקב, נווה צה\"ל",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202412/19/2_6/o/y2_1pa_010788_20241219161905.jpeg",
+        "adType": "agency"
+      },
+      {
+        "id": "jj1u10oi",
+        "link": "https://www.yad2.co.il/realestate/item/jj1u10oi",
+        "price": 4000,
+        "rooms": 1,
+        "sqm": 63,
+        "floor": 3,
+        "street": "טברסקי",
+        "neighborhood": "מונטיפיורי, הרכבת",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202512/16/2_6/o/y2_1pa_010659_20251216142126.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "3d56hqib",
+        "link": "https://www.yad2.co.il/realestate/item/3d56hqib",
+        "price": 3800,
+        "rooms": 1,
+        "sqm": 35,
+        "floor": 2,
+        "street": "שדרות וושינגטון",
+        "neighborhood": "פלורנטין",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202602/12/2_6/o/y2_1_2m0v1BRyO6_20260212.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "80d97jfh",
+        "link": "https://www.yad2.co.il/realestate/item/80d97jfh",
+        "price": 3500,
+        "rooms": 1,
+        "sqm": 30,
+        "floor": 0,
+        "street": "הרב יוסף צוברי",
+        "neighborhood": "נווה אליעזר וכפר שלם מזרח",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202307/25/2_6/o/y2_1_17Wwe0hsUW_20230725.jpg",
+        "adType": "platinum"
+      }
+    ]
   }
 ]
