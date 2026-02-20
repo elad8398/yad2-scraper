@@ -18882,5 +18882,97 @@
         "adType": "platinum"
       }
     ]
+  },
+  {
+    "timestamp": "2026-02-20T19:44:22.431Z",
+    "topic": "apartments-TLV",
+    "totalListings": 54,
+    "newListingsCount": 6,
+    "listings": [
+      {
+        "id": "q4s77khm",
+        "link": "https://www.yad2.co.il/realestate/item/q4s77khm",
+        "price": 5000,
+        "rooms": 3,
+        "sqm": 70,
+        "floor": 1,
+        "street": "מרדכי אנילביץ'",
+        "neighborhood": "יד אליהו",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202601/17/2_2/o/y2_1_08269_20260117091811.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "bcy4gn2k",
+        "link": "https://www.yad2.co.il/realestate/item/bcy4gn2k",
+        "price": 4900,
+        "rooms": 3,
+        "sqm": 65,
+        "floor": 1,
+        "street": "נרדור",
+        "neighborhood": "יפו ד', גבעת התמרים",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202602/20/2_2/o/y2_1_03304_20260220095242.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "f8bzm35s",
+        "link": "https://www.yad2.co.il/realestate/item/f8bzm35s",
+        "price": 3000,
+        "rooms": 1.5,
+        "sqm": 28,
+        "floor": 1,
+        "street": "רבנו חננאל",
+        "neighborhood": "גבעת הרצל, אזור המלאכה יפו",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202504/15/2_6/o/y2_1_GHuME6BPoV_20250415.jpg",
+        "adType": "agency"
+      },
+      {
+        "id": "s3daffk7",
+        "link": "https://www.yad2.co.il/realestate/item/s3daffk7",
+        "price": 4700,
+        "rooms": 1.5,
+        "sqm": 45,
+        "floor": 0,
+        "street": "מונטיפיורי",
+        "neighborhood": "לב תל אביב, לב העיר צפון",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202504/08/2_6/o/y2_2_XO7RaBQcwn_20250408.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "ncvxntsx",
+        "link": "https://www.yad2.co.il/realestate/item/ncvxntsx",
+        "price": 4100,
+        "rooms": 1,
+        "sqm": 45,
+        "floor": 2,
+        "street": "הירקון",
+        "neighborhood": "הצפון הישן - דרום",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202601/22/2_6/o/y2_1pa_010606_20260122153406.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "wg05dorq",
+        "link": "https://www.yad2.co.il/realestate/item/wg05dorq",
+        "price": 4500,
+        "rooms": 1.5,
+        "sqm": 25,
+        "floor": 2,
+        "street": "שיינקין",
+        "neighborhood": "לב תל אביב, לב העיר צפון",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202512/23/2_6/o/y2_1_0mikNUShDM_20251223.jpeg",
+        "adType": "platinum"
+      }
+    ]
   }
 ]
