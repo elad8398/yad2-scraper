@@ -19658,5 +19658,83 @@
         "adType": "platinum"
       }
     ]
+  },
+  {
+    "timestamp": "2026-02-20T23:05:31.940Z",
+    "topic": "apartments-TLV",
+    "totalListings": 54,
+    "newListingsCount": 5,
+    "listings": [
+      {
+        "id": "iqfxq8mf",
+        "link": "https://www.yad2.co.il/realestate/item/iqfxq8mf",
+        "price": 4600,
+        "rooms": 1,
+        "sqm": 37,
+        "floor": 6,
+        "street": "יוניצמן",
+        "neighborhood": "גלילות",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202602/08/2_2/o/y2_1pa_010854_20260208215635.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "ddkeaghb",
+        "link": "https://www.yad2.co.il/realestate/item/ddkeaghb",
+        "price": 3800,
+        "rooms": 2,
+        "sqm": 36,
+        "floor": 3,
+        "street": "רוטנשטרייך",
+        "neighborhood": "ניר אביב",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202509/17/2_2/o/y2_1_09950_20250917194753.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "6m54dc3e",
+        "link": "https://www.yad2.co.il/realestate/item/6m54dc3e",
+        "price": 3500,
+        "rooms": 2,
+        "sqm": 35,
+        "floor": 1,
+        "street": "אצ\"ל",
+        "neighborhood": "התקוה, בית יעקב, נווה צה\"ל",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202601/05/2_6/o/y2_1pa_010033_20260105125703.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "0aezjwca",
+        "link": "https://www.yad2.co.il/realestate/item/0aezjwca",
+        "price": 4100,
+        "rooms": 1,
+        "sqm": 24,
+        "floor": 2,
+        "street": "בן יהודה",
+        "neighborhood": "הצפון הישן - דרום",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202602/16/2_6/o/y2_1pa_010311_20260216120315.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "f8bzm35s",
+        "link": "https://www.yad2.co.il/realestate/item/f8bzm35s",
+        "price": 3000,
+        "rooms": 1.5,
+        "sqm": 28,
+        "floor": 1,
+        "street": "רבנו חננאל",
+        "neighborhood": "גבעת הרצל, אזור המלאכה יפו",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202504/15/2_6/o/y2_1_GHuME6BPoV_20250415.jpg",
+        "adType": "platinum"
+      }
+    ]
   }
 ]
