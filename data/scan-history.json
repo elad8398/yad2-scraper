@@ -24513,5 +24513,69 @@
         "adType": "platinum"
       }
     ]
+  },
+  {
+    "timestamp": "2026-02-21T23:01:25.715Z",
+    "topic": "apartments-TLV",
+    "totalListings": 54,
+    "newListingsCount": 4,
+    "listings": [
+      {
+        "id": "6d6nxksm",
+        "link": "https://www.yad2.co.il/realestate/item/6d6nxksm",
+        "price": 4900,
+        "rooms": 1,
+        "sqm": 45,
+        "floor": 0,
+        "street": "יוסף הנשיא",
+        "neighborhood": "לב תל אביב, לב העיר צפון",
+        "city": "תל אביב יפו",
+        "propertyType": "דירת גן",
+        "image": "https://img.yad2.co.il/Pic/202601/28/2_2/o/y2_1pa_010462_20260128220940.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "fl44xzn6",
+        "link": "https://www.yad2.co.il/realestate/item/fl44xzn6",
+        "price": 4200,
+        "rooms": 2,
+        "sqm": 40,
+        "floor": 4,
+        "street": "אח\"י דקר",
+        "neighborhood": "נווה שרת",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202601/28/2_6/o/y2_1pa_010024_20260128090026.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "61y1m18u",
+        "link": "https://www.yad2.co.il/realestate/item/61y1m18u",
+        "price": 3590,
+        "rooms": 1,
+        "sqm": 30,
+        "floor": 1,
+        "street": "הלסינקי",
+        "neighborhood": "הצפון החדש - כיכר המדינה",
+        "city": "תל אביב יפו",
+        "propertyType": "סטודיו/ לופט",
+        "image": "https://img.yad2.co.il/Pic/202601/28/2_6/o/y2_1pa_010435_20260128184700.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "wg05dorq",
+        "link": "https://www.yad2.co.il/realestate/item/wg05dorq",
+        "price": 4500,
+        "rooms": 1.5,
+        "sqm": 25,
+        "floor": 2,
+        "street": "שיינקין",
+        "neighborhood": "לב תל אביב, לב העיר צפון",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202512/23/2_6/o/y2_1_0mikNUShDM_20251223.jpeg",
+        "adType": "platinum"
+      }
+    ]
   }
 ]
