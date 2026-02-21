@@ -23692,5 +23692,12 @@
         "adType": "platinum"
       }
     ]
+  },
+  {
+    "timestamp": "2026-02-21T21:36:08.802Z",
+    "topic": "apartments-TLV",
+    "totalListings": 0,
+    "newListingsCount": 0,
+    "listings": []
   }
 ]
