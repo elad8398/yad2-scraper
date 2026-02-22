@@ -25971,5 +25971,69 @@
         "adType": "platinum"
       }
     ]
+  },
+  {
+    "timestamp": "2026-02-22T09:16:52.265Z",
+    "topic": "apartments-TLV",
+    "totalListings": 54,
+    "newListingsCount": 4,
+    "listings": [
+      {
+        "id": "oeu5f7io",
+        "link": "https://www.yad2.co.il/realestate/item/oeu5f7io",
+        "price": 4200,
+        "rooms": 1.5,
+        "sqm": 38,
+        "floor": 0,
+        "street": "יחזקאל",
+        "neighborhood": "הצפון הישן - צפון",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202601/02/2_6/o/y2_2_992491_20260102.jpg",
+        "adType": "agency"
+      },
+      {
+        "id": "cqapupit",
+        "link": "https://www.yad2.co.il/realestate/item/cqapupit",
+        "price": 3600,
+        "rooms": 2,
+        "sqm": 35,
+        "floor": 0,
+        "street": "אוריאל אקוסטה",
+        "neighborhood": "פלורנטין",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202602/11/2_6/o/y2_1pa_010725_20260211124946.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "9te1ikm1",
+        "link": "https://www.yad2.co.il/realestate/item/9te1ikm1",
+        "price": 3500,
+        "rooms": 1,
+        "sqm": 130,
+        "floor": 0,
+        "street": "אלול",
+        "neighborhood": "עזרא, הארגזים",
+        "city": "תל אביב יפו",
+        "propertyType": "בית פרטי/ קוטג'",
+        "image": "https://img.yad2.co.il/Pic/202501/16/2_6/o/y2_1pa_010231_20250116200000.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "84717138",
+        "link": "https://www.yad2.co.il/realestate/item/84717138",
+        "price": 3600,
+        "rooms": 2.5,
+        "sqm": 58,
+        "floor": 3,
+        "street": "מעפילי אגוז",
+        "neighborhood": "נווה חן",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202602/03/2_6/o/y2_2_MqiB0paIan_20260203.jpg",
+        "adType": "platinum"
+      }
+    ]
   }
 ]
