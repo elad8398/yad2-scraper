@@ -28653,5 +28653,55 @@
         "adType": "platinum"
       }
     ]
+  },
+  {
+    "timestamp": "2026-02-22T22:39:18.217Z",
+    "topic": "apartments-TLV",
+    "totalListings": 54,
+    "newListingsCount": 3,
+    "listings": [
+      {
+        "id": "ld04tgio",
+        "link": "https://www.yad2.co.il/realestate/item/ld04tgio",
+        "price": 4800,
+        "rooms": 2,
+        "sqm": 50,
+        "floor": 0,
+        "street": "אבן ספיר",
+        "neighborhood": "שיכון דן, נווה דן",
+        "city": "תל אביב יפו",
+        "propertyType": "יחידת דיור",
+        "image": "https://img.yad2.co.il/Pic/202601/31/2_2/o/y2_1pa_010331_20260131213125.jpeg",
+        "adType": "private"
+      },
+      {
+        "id": "1d44rl9o",
+        "link": "https://www.yad2.co.il/realestate/item/1d44rl9o",
+        "price": 4000,
+        "rooms": 2,
+        "sqm": 45,
+        "floor": 4,
+        "street": "אח\"י דקר",
+        "neighborhood": "נווה שרת",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202507/27/2_6/o/y2_1pa_010091_20250727122736.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "tt3jr3ei",
+        "link": "https://www.yad2.co.il/realestate/item/tt3jr3ei",
+        "price": 3500,
+        "rooms": 1.5,
+        "sqm": 25,
+        "floor": 0,
+        "street": "שדרות המעפילים",
+        "neighborhood": "יד אליהו",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202601/11/2_6/o/y2_1_WSH5Ot9n7T_20260111.jpeg",
+        "adType": "platinum"
+      }
+    ]
   }
 ]
