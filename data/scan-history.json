@@ -26571,5 +26571,83 @@
         "adType": "platinum"
       }
     ]
+  },
+  {
+    "timestamp": "2026-02-22T11:58:38.420Z",
+    "topic": "apartments-TLV",
+    "totalListings": 54,
+    "newListingsCount": 5,
+    "listings": [
+      {
+        "id": "3tiynoch",
+        "link": "https://www.yad2.co.il/realestate/item/3tiynoch",
+        "price": 3500,
+        "rooms": 1,
+        "sqm": 25,
+        "floor": 0,
+        "street": "שדרות נורדאו",
+        "neighborhood": "הצפון הישן - צפון",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202602/09/2_6/o/y2_1pa_010626_20260209155824.jpeg",
+        "adType": "agency"
+      },
+      {
+        "id": "o5qn7m8z",
+        "link": "https://www.yad2.co.il/realestate/item/o5qn7m8z",
+        "price": 5000,
+        "rooms": 2.5,
+        "sqm": 55,
+        "floor": 2,
+        "street": "אחרון",
+        "neighborhood": "קרית שלום",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202602/14/2_6/o/y2_1pa_010907_20260214150444.jpeg",
+        "adType": "agency"
+      },
+      {
+        "id": "ncvxntsx",
+        "link": "https://www.yad2.co.il/realestate/item/ncvxntsx",
+        "price": 4100,
+        "rooms": 1,
+        "sqm": 45,
+        "floor": 2,
+        "street": "הירקון",
+        "neighborhood": "הצפון הישן - דרום",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202601/22/2_6/o/y2_1pa_010606_20260122153406.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "4amu9jyh",
+        "link": "https://www.yad2.co.il/realestate/item/4amu9jyh",
+        "price": 2180,
+        "rooms": 1,
+        "sqm": 20,
+        "floor": 0,
+        "street": "סמטת נווה צדק",
+        "neighborhood": "נווה צדק",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202602/22/2_6/o/y2_1pa_010045_20260222112757.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "fl44xzn6",
+        "link": "https://www.yad2.co.il/realestate/item/fl44xzn6",
+        "price": 4200,
+        "rooms": 2,
+        "sqm": 40,
+        "floor": 4,
+        "street": "אח\"י דקר",
+        "neighborhood": "נווה שרת",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202601/28/2_6/o/y2_1pa_010024_20260128090026.jpeg",
+        "adType": "platinum"
+      }
+    ]
   }
 ]
