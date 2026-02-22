@@ -28391,5 +28391,55 @@
         "adType": "platinum"
       }
     ]
+  },
+  {
+    "timestamp": "2026-02-22T21:02:54.104Z",
+    "topic": "apartments-TLV",
+    "totalListings": 54,
+    "newListingsCount": 3,
+    "listings": [
+      {
+        "id": "pg06wbgl",
+        "link": "https://www.yad2.co.il/realestate/item/pg06wbgl",
+        "price": 4400,
+        "rooms": 1,
+        "sqm": 20,
+        "floor": 0,
+        "street": "פרישמן",
+        "neighborhood": "הצפון הישן - דרום",
+        "city": "תל אביב יפו",
+        "propertyType": "סטודיו/ לופט",
+        "image": "https://img.yad2.co.il/Pic/202512/15/2_6/o/y2_1pa_010988_20251215232224.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "w9g34ptt",
+        "link": "https://www.yad2.co.il/realestate/item/w9g34ptt",
+        "price": 4900,
+        "rooms": 2,
+        "sqm": 60,
+        "floor": 4,
+        "street": "",
+        "neighborhood": "נווה שרת",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202509/15/2_6/o/y2_1pa_010564_20250915211940.jpeg",
+        "adType": "platinum"
+      },
+      {
+        "id": "80d97jfh",
+        "link": "https://www.yad2.co.il/realestate/item/80d97jfh",
+        "price": 3500,
+        "rooms": 1,
+        "sqm": 30,
+        "floor": 0,
+        "street": "הרב יוסף צוברי",
+        "neighborhood": "נווה אליעזר וכפר שלם מזרח",
+        "city": "תל אביב יפו",
+        "propertyType": "דירה",
+        "image": "https://img.yad2.co.il/Pic/202307/25/2_6/o/y2_1_17Wwe0hsUW_20230725.jpg",
+        "adType": "platinum"
+      }
+    ]
   }
 ]
